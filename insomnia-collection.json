@@ -1,0 +1,164 @@
+{
+  "_type": "export",
+  "__export_format": 4,
+  "__export_date": "2026-04-27T00:00:00.000Z",
+  "__export_source": "insomnia.desktop.app:v2024.2.0",
+  "resources": [
+    {
+      "_id": "wrk_reserva_salas",
+      "_type": "workspace",
+      "name": "Reserva de Salas API",
+      "description": "Coleção Insomnia para testar endpoints de Salas e Reservas com Basic Auth (user: pepe / senha: 1)."
+    },
+    {
+      "_id": "env_base",
+      "_type": "environment",
+      "parentId": "wrk_reserva_salas",
+      "name": "Base Environment",
+      "data": {
+        "base_url": "http://localhost:8080",
+        "basic_user": "pepe",
+        "basic_pass": "1"
+      }
+    },
+    {
+      "_id": "fld_salas",
+      "_type": "request_group",
+      "parentId": "wrk_reserva_salas",
+      "name": "Salas"
+    },
+    {
+      "_id": "fld_reservas",
+      "_type": "request_group",
+      "parentId": "wrk_reserva_salas",
+      "name": "Reservas"
+    },
+
+    {
+      "_id": "req_sala_criar",
+      "_type": "request",
+      "parentId": "fld_salas",
+      "name": "Criar sala",
+      "method": "POST",
+      "url": "{{ base_url }}/api/sala",
+      "authentication": {
+        "type": "basic",
+        "username": "{{ basic_user }}",
+        "password": "{{ basic_pass }}"
+      },
+      "headers": [
+        { "name": "Content-Type", "value": "application/json" }
+      ],
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n  \"nome\": \"Sala 101\"\n}"
+      }
+    },
+    {
+      "_id": "req_sala_listar",
+      "_type": "request",
+      "parentId": "fld_salas",
+      "name": "Listar salas",
+      "method": "GET",
+      "url": "{{ base_url }}/api/sala/all",
+      "authentication": {
+        "type": "basic",
+        "username": "{{ basic_user }}",
+        "password": "{{ basic_pass }}"
+      }
+    },
+    {
+      "_id": "req_sala_buscar",
+      "_type": "request",
+      "parentId": "fld_salas",
+      "name": "Buscar sala por ID",
+      "method": "GET",
+      "url": "{{ base_url }}/api/sala/1",
+      "authentication": {
+        "type": "basic",
+        "username": "{{ basic_user }}",
+        "password": "{{ basic_pass }}"
+      }
+    },
+    {
+      "_id": "req_sala_atualizar",
+      "_type": "request",
+      "parentId": "fld_salas",
+      "name": "Atualizar sala",
+      "method": "PUT",
+      "url": "{{ base_url }}/api/sala/1",
+      "authentication": {
+        "type": "basic",
+        "username": "{{ basic_user }}",
+        "password": "{{ basic_pass }}"
+      },
+      "headers": [
+        { "name": "Content-Type", "value": "application/json" }
+      ],
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n  \"nome\": \"Sala 101 - Atualizada\"\n}"
+      }
+    },
+    {
+      "_id": "req_sala_remover",
+      "_type": "request",
+      "parentId": "fld_salas",
+      "name": "Remover sala",
+      "method": "DELETE",
+      "url": "{{ base_url }}/api/sala/1",
+      "authentication": {
+        "type": "basic",
+        "username": "{{ basic_user }}",
+        "password": "{{ basic_pass }}"
+      }
+    },
+
+    {
+      "_id": "req_reserva_criar",
+      "_type": "request",
+      "parentId": "fld_reservas",
+      "name": "Criar reserva",
+      "method": "POST",
+      "url": "{{ base_url }}/api/reserva",
+      "authentication": {
+        "type": "basic",
+        "username": "{{ basic_user }}",
+        "password": "{{ basic_pass }}"
+      },
+      "headers": [
+        { "name": "Content-Type", "value": "application/json" }
+      ],
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n  \"salaId\": 1,\n  \"inicioReserva\": \"2026-05-01T10:00:00\",\n  \"finalReserva\": \"2026-05-01T11:00:00\",\n  \"nomeResponsavel\": \"João da Silva\"\n}"
+      }
+    },
+    {
+      "_id": "req_reserva_listar",
+      "_type": "request",
+      "parentId": "fld_reservas",
+      "name": "Listar reservas",
+      "method": "GET",
+      "url": "{{ base_url }}/api/reserva",
+      "authentication": {
+        "type": "basic",
+        "username": "{{ basic_user }}",
+        "password": "{{ basic_pass }}"
+      }
+    },
+    {
+      "_id": "req_reserva_cancelar",
+      "_type": "request",
+      "parentId": "fld_reservas",
+      "name": "Cancelar reserva",
+      "method": "DELETE",
+      "url": "{{ base_url }}/api/reserva/1",
+      "authentication": {
+        "type": "basic",
+        "username": "{{ basic_user }}",
+        "password": "{{ basic_pass }}"
+      }
+    }
+  ]
+}
